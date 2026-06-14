@@ -42,10 +42,6 @@ The Multi-Agent Research System combines multiple specialized AI agents to produ
 ![Research History](docs/images/history-view-demo.png)
 *User's previous research projects with quick access and detailed review options.*
 
-### Pipeline Progress
-![Pipeline Progress](docs/images/pipeline-progress-demo.png)
-*Real-time visualization of each agent's progress during the research workflow.*
-
 ## 🏗️ Project Structure
 
 ```
@@ -180,9 +176,7 @@ npm run dev
 ```
 
 The application will be available at:
-- **Frontend**: http://localhost:5173
-- **Backend API**: http://localhost:8765
-- **API Docs**: http://localhost:8765/docs
+[https://mulit-agent-research-g82n.vercel.app/]
 
 ## 📚 API Documentation
 
