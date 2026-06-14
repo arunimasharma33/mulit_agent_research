@@ -28,6 +28,7 @@ from backend.schemas import (
     UserResponse,
 )
 from pipeline import run_research_pipeline
+from content_utils import normalize_agent_content
 
 
 @asynccontextmanager
@@ -140,10 +141,10 @@ def research_stream(
                 history = ResearchHistory(
                     user_id=user.id,
                     topic=topic,
-                    search_results=state.get("search_results"),
-                    scraped_content=state.get("scraped_content"),
-                    report=state.get("report"),
-                    feedback=state.get("feedback"),
+                    search_results=normalize_agent_content(state.get("search_results")),
+                    scraped_content=normalize_agent_content(state.get("scraped_content")),
+                    report=normalize_agent_content(state.get("report")),
+                    feedback=normalize_agent_content(state.get("feedback")),
                 )
                 session.add(history)
                 session.commit()

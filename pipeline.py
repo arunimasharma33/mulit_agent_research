@@ -1,6 +1,7 @@
 from typing import Callable, Iterator
 
 from agents import build_reader_agent, build_search_agent, writer_chain, critic_chain
+from content_utils import normalize_agent_content
 
 ProgressCallback = Callable[[dict], None]
 
@@ -21,7 +22,7 @@ def run_research_pipeline(
     search_result = search_agent.invoke({
         "messages": [("user", f"Find recent, reliable and detailed information about: {topic}")]
     })
-    state["search_results"] = search_result["messages"][-1].content
+    state["search_results"] = normalize_agent_content(search_result["messages"][-1].content)
     _emit(on_progress, {
         "step": "search",
         "status": "completed",
@@ -38,7 +39,7 @@ def run_research_pipeline(
             f"Search Results:\n{state['search_results'][:800]}"
         )]
     })
-    state["scraped_content"] = reader_result["messages"][-1].content
+    state["scraped_content"] = normalize_agent_content(reader_result["messages"][-1].content)
     _emit(on_progress, {
         "step": "reader",
         "status": "completed",
@@ -51,10 +52,10 @@ def run_research_pipeline(
         f"SEARCH RESULTS : \n {state['search_results']} \n\n"
         f"DETAILED SCRAPED CONTENT : \n {state['scraped_content']}"
     )
-    state["report"] = writer_chain.invoke({
+    state["report"] = normalize_agent_content(writer_chain.invoke({
         "topic": topic,
         "research": research_combined,
-    })
+    }))
     _emit(on_progress, {
         "step": "writer",
         "status": "completed",
@@ -63,7 +64,7 @@ def run_research_pipeline(
     })
 
     _emit(on_progress, {"step": "critic", "status": "started", "label": "Critic"})
-    state["feedback"] = critic_chain.invoke({"report": state["report"]})
+    state["feedback"] = normalize_agent_content(critic_chain.invoke({"report": state["report"]}))
     _emit(on_progress, {
         "step": "critic",
         "status": "completed",
