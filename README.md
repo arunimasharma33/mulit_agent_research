@@ -400,4 +400,4 @@ For issues, questions, or suggestions:
 
 ---
 
-**Built with ❤️ using AI and multi-agent systems**
+**Built with ❤️ by me**
