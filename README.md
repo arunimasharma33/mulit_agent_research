@@ -52,11 +52,15 @@ The Multi-Agent Research System combines multiple specialized AI agents to produ
 ![Main Dashboard](docs/images/dashboard-demo.png)
 *The primary interface showing the research topic input form and pipeline progress visualization.*
 
+### Progress
+![Starting Step](docs/images/progress.png)
+*Display when the agents start working.*
+
 ### Research Results
 ![Research Results](docs/images/research-results-demo.png)
 *Display of generated research report with structured sections from the writer agent.*
 
-![Critic Results](docs/images/critic.png)
+![Critic Results](docs/images/critic-result.png)
 *Display of the critic agent results.*
 
 ### Research History
