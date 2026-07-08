@@ -11,7 +11,6 @@
 
 A sophisticated AI-powered research platform that leverages coordinated multi-agent systems to conduct comprehensive research, generate detailed reports, and provide critical analysis — all through an intuitive web interface.
 
-> 💡 **Try it live:** register an account on the [demo](https://mulit-agent-research-g82n.vercel.app/), enter any research topic, and watch the Search → Reader → Writer → Critic pipeline run in real time.
 
 ---
 
@@ -71,9 +70,7 @@ The Multi-Agent Research System combines multiple specialized AI agents to produ
 
 ## 🤖 Agent Pipeline Architecture
 
-```
 ![System Architecture](docs/images/architecture.png)
-```
 
 ---
 
